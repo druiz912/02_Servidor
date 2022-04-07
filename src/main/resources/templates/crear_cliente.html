@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Crear cliente</title>
+	<style>
+		header {
+			background-color: #B8D3F2;
+			text-align: center;
+			width: 100%;
+			height: 74px;
+			display: grid;
+		}
+
+		h1 {
+			font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+			letter-spacing: 1px;
+		}
+
+		div {
+			display: inline-flex;
+			margin: 10px 0px 1px 200px;
+			width: 76%;
+			height: 165px;
+		}
+
+		table {
+			width: 100%;
+			text-align: center;
+			border: 5px solid black;
+		}
+
+		tr th {
+			border-bottom: 3px solid black;
+
+			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		}
+
+		/* Calzonas,Camisetas,Pantalones... */
+		tr td {
+			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		}
+
+		/* IDENTIFICADOR, NOMBRE E IMAGEN */
+		th:nth-child(1n+1) {
+			background-color: #8A84E2;
+		}
+
+		/* Fila 1, Fila 3 */
+		tr:nth-child(2n+0) {
+			background-color: #AFAFDC;
+		}
+
+		tr:hover:nth-child(1n+0) {
+			background-color: #B8D3F2;
+		}
+
+		/* FORMULARIO */
+		.formulario {
+			display: inline-grid;
+			width: 100%;
+			border: 5px solid black;
+			margin: 5px 0px 5px 0px;
+			background-color: #8A84E2;
+		}
+
+		form {
+			margin: auto auto;
+			/* Centramos */
+			width: 100%;
+			/* Sin ancho no podemos centrar el formulario */
+
+		}
+
+		form input {
+			padding: 2px;
+			/* separamos los bordes del form del resto de elementos */
+			border-radius: 6px;
+			/* Redondeamos los bordes del form */
+			height: 25px;
+		}
+
+		form input:hover {
+			background-color: #B8D3F2
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<h1>CLIENTES</h1>
+	</header>
+	<div>
+		<table>
+			<tr>
+				<th>Identificador</th>
+				<th>Nombre</th>
+				<th>Apellidos</th>
+				<th>E-mail</th>
+				<th>Suscripción NL</th>
+				<th>Dirección de envío</th>
+				<th>Teléfono</th>
+				<th>Estado</th>
+			</tr>
+			<tr th:each="clientesList: ${clientes}">
+				<td th:text="${clientesList.identificador}"></td>
+				<td th:text="${clientesList.nombre}"></td>
+				<td th:text="${clientesList.apellidos}"></td>
+				<td th:text="${clientesList.email}"></td>
+				<td th:text="${clientesList.suscripcion_nl}"></td>
+				<td th:text="${clientesList.direccion_envio}"></td>
+				<td th:text="${clientesList.telefono}"></td>
+				<td th:text="${clientesList.estado}"></td>
+			</tr>
+		</table>
+	</div>
+	<div class="formulario">
+		<form method="get" action="/crearClientes">
+			<!-- action debe coincidir con el controlador  -->
+
+			<input type="text" name="nombre" placeholder="Nombre del cliente">
+			<!-- name: debe coincidir los parametros del controlador-->
+			<input type="text" name="apellidos" placeholder="Apellidos del cliente">
+			<input type="text" name="email" placeholder="e-mail">
+			<input type="text" name="password" placeholder="password">
+			<input type="checkbox" name="suscripcion_nl" placeholder="Suscripción a NewsLetter">
+			<input type="text" name="direccion_envio" placeholder="Dirección de envío">
+			<input type="text" name="telefono" placeholder="Teléfono de contacto">
+			<input type="checkbox" name="activo" placeholder="Estado">
+			<input type="submit" value="Enviar">
+		</form>
+	</div>
+	<div>
+		<a href="../templates/administracion.html"><button id="inicio">Atrás</button></a>
+	</div>
+</body>
+
+</html>

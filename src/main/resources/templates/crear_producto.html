@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Crear productos</title>
+	<link rel="stylesheet" href="../css/producto.css">
+</head>
+
+<body>
+	<header>
+		<h1>TABLA DE PRODUCTOS</h1>
+	</header>
+		<table>
+			<tr>
+				<th title="ID">IDENTIFICADOR</th>
+				<th>NOMBRE</th>
+				<th>DESCRIPCIÓN</th>
+				<th>PVP</th>
+				<th>SN</th>
+				<th>IMAGEN</th>
+				<th>COLOR PREDOMINANTE</th>
+				<th>STOCK</th>
+				<th>TEMPORADA</th>
+				<th>REBAJADO</th>
+				<th>ID_CATEGORIA</th>
+				<th>ID_TIPO_CLIENTE</th>
+			</tr>
+			<tr th:each="productos: ${Producto}">
+				<td th:text="${productos.identificador}"></td>
+				<td th:text="${productos.nombre}"></td>
+				<td th:text="${productos.descripcion}"></td>
+				<td th:text="${productos.pvp}"></td>
+				<td th:text="${productos.sn}"></td>
+				<td>
+    				<img th:src="${productos.imagen}" width='100px'/>
+    			</td>
+
+				
+				<td th:text="${productos.colorpredominante}"></td>
+				<td th:text="${productos.stock}"></td>
+				<td th:text="${productos.temporada}? 'Sí' : 'No'"></td>
+				<td th:text="${productos.rebajado}? 'Sí' : 'No'"></td>
+				<td th:text="${productos.id_categoria}"></td>
+				<td th:text="${productos.id_tipo_cliente}"></td>
+
+			</tr>
+		</table>
+	
+	<div class="formulario">
+		<form method="get" action="/crearProductos">
+			<!-- action debe coincidir con el controlador  -->
+			<input type="text" name="nombre" placeholder="Nombre del producto" style="margin-top: 5px;">
+			<br>
+			<input type="text" name="descripcion" placeholder="Descripción del producto">
+			<br>
+			<input type="number" name="PVP" placeholder="P.V.P"><br>
+			
+			<input type="text" name="SN" placeholder="Suscripción a NewsLetters"><br>
+			<input type="text" name="imagen" placeholder="Imagen"><br>
+			<label for="colorpredominante">Color</label><br>
+			<input type="color" name="colorpredominante"><br>
+			<input type="text" name="stock" placeholder="Stock"><br>
+			<label for="temporada">Temporada</label>
+			<input type="checkbox" name="temporada" placeholder="Temporada">
+			<br>
+			<label for="rebajado">Rebajado</label>
+			<input type="checkbox" name="rebajado" placeholder="Rebajado">
+			<br>
+			<!-- Para que salga las categorias que ya hay  -->
+			<select id="id_categoria" name="id_categoria" >
+				<option th:each="categoria: ${Categorias}" th:value="${categoria.identificador}" th:text="${categoria.nombre}"></option>
+			</select>
+			<br>
+			<!-- Para que salga los tipos de clientes que ya hay  -->
+			<select id="id_tipo_cliente" name="id_tipo_cliente" >
+				<option th:each="tipoclientes: ${TiposClientes}" th:value="${tipoclientes.identificador}" th:text="${tipoclientes.nombre}"></option>
+			</select>
+			<input type="submit" value="Enviar" style="margin-bottom: 5px; margin-top: 5px;">
+		</form>
+	</div>
+	<div>
+		<a href="administracion.html"><button id="inicio">Atrás</button></a>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estefashion</title>
+<link rel="stylesheet" href="../css/principal.css">
+</head>
+
+<body>
+	<div id="contenedor">
+		<header>
+			<h1>ESTEFASHION</h1>
+		</header>
+		<nav>
+			<ul>
+				<li><button>CAMISAS</button></li>
+				<li><button>CAMISETAS</button></li>
+				<li><button>PANTALONES</button></li>
+				<li><button>CALZADO</button></li>
+				<li><button>COMPLEMENTO</button></li>
+			</ul>
+		</nav>
+		<main>
+			<section class="cards">
+				<div class="card" th:each="producto: ${listado_productos}">
+					<div>
+						<img th:src="${producto.imagen}" />
+					</div>
+					<div class="nombre-producto" style="font-size: 1.5em">
+						<span th:text="${producto.nombre}"></span>
+					</div>
+					<div class="nombre-producto" style="font-size: 0.7em; color: #888">
+						<span th:text="${producto.descripcion}"></span>
+					</div>
+					<div class="precio-producto">
+						<span th:text="${producto.pvp}+€"></span>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer>
+      <!-- Footer main -->
+      <section class="ft-main">
+        <div class="ft-main-item">
+          <h2 class="ft-title">Sobre nosotros</h2>
+          <ul>
+            <li><a href="#">Sobre Estefashion</a></li>
+            <li><a href="#">Join Life</a></li>
+            <li><a href="#">Trabaja con nosotros</a></li>
+            <li><a href="#">Affinity card</a></li>
+            <li><a href="#">Nuestras tiendas</a></li>
+          </ul>
+        </div>
+        <div class="ft-main-item">
+          <h2 class="ft-title">Ayuda</h2>
+          <ul>
+            <li><a href="#">Comprar online</a></li>
+            <li><a href="#">Pago</a></li>
+            <li><a href="#">Envío</a></li>
+            <li><a href="#">Devoluciones</a></li>
+          </ul>
+        </div>
+        <div class="ft-main-item">
+          <h2 class="ft-title">Contacto</h2>
+          <ul>
+            <li><a href="#">estefashion_jerez@estefashion.es</a></li>
+            <li><a href="#">915675843</a></li>
+            <li><a href="#">Avda Andalucía, S/N</a></li>
+          </ul>
+        </div>
+        <div class="ft-main-item">
+          <h2 class="ft-title">Manténte actualizado/a</h2>
+          <p>Suscríbete a nuestra newsletters</p>
+          <form>
+            <input type="email" name="email" placeholder="E-mail">
+            <input type="submit" value="Suscríbete">
+          </form>
+        </div>
+      </section>
+     
+      <!-- Footer social -->
+      <section class="ft-social">
+        <ul class="ft-social-list">
+          <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+          <li><a href="#"><i class="fab fa-github"></i></a></li>
+          <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+          <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+        </ul>
+      </section>
+     
+      <!-- Footer legal -->
+      <section class="ft-legal">
+        <ul class="ft-legal-list">
+          <li><a href="#">Términos &amp; Condiciones</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+          <li>&copy; 2022 Copyright Inc.</li>
+        </ul>
+      </section>
+    </footer>
+</body>
+
+</html>
