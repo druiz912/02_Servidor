@@ -14,7 +14,6 @@ public class AltaCategoriaController {
 	private ICategoriasService categoriasService;
 	
 	@RequestMapping(value="addCategorias",method=RequestMethod.GET)
-	
 	public String addCategorias(
 	@RequestParam(name="nombre", required=true) String nombre, 
 	@RequestParam(name="imagen", required=false) String imagen,

@@ -17,7 +17,7 @@ public class CategoriasServiceImpl implements ICategoriasService {
 		return repo.save(c);
 	}
 	
-//MÉTODO DE MOSTRAR LISTA DE CATEGORÍAS
+	//MÉTODO DE MOSTRAR LISTA DE CATEGORÍAS
 	@Override
 	public List<Categorias> findAll() {
 		return repo.findAll();
